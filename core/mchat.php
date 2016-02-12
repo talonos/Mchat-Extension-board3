@@ -525,7 +525,7 @@ class mchat
 		{
 		$pageloc = $this->user->page['page'];
 		}
-	
+
 		$this->template->assign_vars(array(
 			'MCHAT_FILE_NAME'				=> $this->helper->route('dmzx_mchat_controller'),
 			'MCHAT_REFRESH_JS'				=> 1000 * $this->config['mchat_refresh'],

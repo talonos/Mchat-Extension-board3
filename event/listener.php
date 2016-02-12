@@ -111,7 +111,7 @@ class listener implements EventSubscriberInterface
 		$pageloc = preg_replace("/\?.+/", "", $pagelocsource);
 		//$pageloc = $this->user->page['page'];
 		}
-		else 
+		else
 		{
 		$pageloc = $this->user->page['page'];
 		}

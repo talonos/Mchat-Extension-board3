@@ -1,11 +1,12 @@
 <?php
+
 /**
-*
-* @package phpBB Extension - mChat
-* @copyright (c) 2015 dmzx - http://www.dmzx-web.net
-* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
-*
-*/
+ *
+ * @package phpBB Extension - mChat
+ * @copyright (c) 2015 dmzx - http://www.dmzx-web.net
+ * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
+ *
+ */
 
 namespace dmzx\mchat\event;
 
@@ -46,6 +47,9 @@ class listener implements EventSubscriberInterface
 		$this->php_ext			= $php_ext;
 	}
 
+	/**
+	 * @return array
+	 */
 	static public function getSubscribedEvents()
 	{
 		return array(
@@ -59,8 +63,8 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	*
-	*/
+	 * @param object $event The event object
+	 */
 	public function add_page_viewonline($event)
 	{
 		if (strrpos($event['row']['session_page'], 'app.' . $this->php_ext . '/mchat') === 0)
@@ -71,8 +75,8 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	*
-	*/
+	 * @param object $event The event object
+	 */
 	public function load_language_on_setup($event)
 	{
 		$lang_set_ext = $event['lang_set_ext'];
@@ -84,12 +88,10 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	* Create a URL to the mchat controller file for the header linklist
-	*
-	* @param object $event The event object
-	* @return null
-	* @access public
-	*/
+	 * Create a URL to the mchat controller file for the header linklist
+	 *
+	 * @param object $event The event object
+	 */
 	public function add_page_header_link($event)
 	{
 		$this->mchat->render_page_header_link();
@@ -99,8 +101,6 @@ class listener implements EventSubscriberInterface
 	 * Check if mchat should be displayed on index.
 	 *
 	 * @param object $event The event object
-	 * @return null
-	 * @access public
 	 */
 	public function display_mchat_on_index($event)
 	{
@@ -136,8 +136,8 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	*
-	*/
+	 * @param object $event The event object
+	 */
 	public function posting_modify_submit_post_after($event)
 	{
 		$this->functions_mchat->mchat_insert_posting($event['mode'], array(
@@ -149,16 +149,16 @@ class listener implements EventSubscriberInterface
 	}
 
 	/**
-	*
-	*/
+	 * @param object $event The event object
+	 */
 	public function display_custom_bbcodes_modify_sql($event)
 	{
 		$event['sql_ary'] = $this->mchat->remove_disallowed_bbcodes($event['sql_ary']);
 	}
 
 	/**
-	*
-	*/
+	 * @param object $event The event object
+	 */
 	public function permissions($event)
 	{
 		$event['permissions'] = array_merge($event['permissions'], array(

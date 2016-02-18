@@ -1,11 +1,12 @@
 <?php
+
 /**
-*
-* @package phpBB Extension - mChat
-* @copyright (c) 2015 dmzx - http://www.dmzx-web.net
-* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
-*
-*/
+ *
+ * @package phpBB Extension - mChat
+ * @copyright (c) 2015 dmzx - http://www.dmzx-web.net
+ * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
+ *
+ */
 
 if (!defined('IN_PHPBB'))
 {
@@ -30,83 +31,77 @@ if (empty($lang) || !is_array($lang))
 // in a url you again do not need to specify an order e.g., 'Click %sHERE%s' is fine
 
 $lang = array_merge($lang, array(
-	'MCHAT_TITLE'					=> 'Mini-Chat',
+	'MCHAT_TITLE'					=> 'Mini Chat',
 	'MCHAT_ADD'						=> 'Senden',
-	'MCHAT_IN'						=> 'in',
-	'MCHAT_IN_SECTION'				=> 'Abschnitt',
-	'MCHAT_LIKES'					=> 'Mag diesen Beitrag',
 	'MCHAT_ANNOUNCEMENT'			=> 'Ankündigen',
 	'MCHAT_ARCHIVE'					=> 'Archiv',
-	'MCHAT_ARCHIVE_PAGE'			=> 'Mini-Chat Archiv',
+	'MCHAT_ARCHIVE_PAGE'			=> 'Mini Chat Archiv',
 	'MCHAT_BBCODES'					=> 'BBCodes',
-	'MCHAT_CLEAN'					=> 'Alle Nachrichten im mChat löschen',
-	'MCHAT_CLEANED'					=> 'Alle Nachrichten wurden erfolgreich gelöscht',
-	'MCHAT_CLEAR_INPUT'				=> 'Zurücksetzen',
-	'MCHAT_COPYRIGHT'				=> '<a href="http://rmcgirr83.org">RMcGirr83</a> &copy; <a href="http://www.dmzx-web.net" title="www.dmzx-web.net">dmzx</a>',
-	'MCHAT_CUSTOM_BBCODES'			=> 'Eigene BBCodes',
-	'MCHAT_DELALLMESS'				=> 'Alle Nachrichten löschen?',
+	'MCHAT_CUSTOM_BBCODES'			=> 'Benutzerdefinierte BBCodes',
 	'MCHAT_DELCONFIRM'				=> 'Nachricht endgültig löschen?',
-	'MCHAT_DELITE'					=> 'Löschen',
-	'MCHAT_EDIT'					=> 'Bearbeiten',
-	'MCHAT_EDITINFO'				=> 'Bearbeite die Nachricht und klick auf OK',
-	'MCHAT_ERROR'					=> 'Fehler',
+	'MCHAT_EDIT'					=> 'Bearbeite',
+	'MCHAT_EDITINFO'				=> 'Bearbeite die Nachricht und klicke OK',
 	'MCHAT_FLOOD'					=> 'Du kannst keine Nachricht so schnell nach deiner letzten Nachricht schreiben',
 	'MCHAT_FOE'						=> 'Die Nachricht wurde von <strong>% 1 $ s </ strong> gemacht, der derzeit auf der Ignorieren-Liste steht.',
-	'MCHAT_HELP'					=> 'mChat Regeln',
-	'MCHAT_HIDE_LIST'				=> 'Verstecke Liste',
-	'MCHAT_HOUR'					=> 'Stunde ',
-	'MCHAT_HOURS'					=> 'Stunden',
-	'MCHAT_IP'						=> 'IP whois für',
-	'MCHAT_MINUTE'					=> 'Minute ',
-	'MCHAT_MINUTES'					=> 'Minuten ',
-	'MCHAT_MESS_LONG'				=> 'Deine Nachricht ist zu lang.\nBitte kürze deine Nachricht auf %s Zeichen',
-	'MCHAT_NO_CUSTOM_PAGE'			=> 'Die separate Seite für mChat ist derzeit nicht aktiviert!',
-	'MCHAT_NO_RULES'				=> 'The mChat rules page is not activated at this time!',
-	'MCHAT_NOACCESS'				=> 'Du hast keine Berechtigung im mChat zu schreiben',
-	'MCHAT_NOACCESS_ARCHIVE'		=> 'Du hast keine Berechtigung das Archiv zu sehen',
-	'MCHAT_NOJAVASCRIPT'			=> 'Dein Browser unterstützt kein Javascript oder Javascript ist deaktiviert',
-	'MCHAT_NOMESSAGE'				=> 'Keine Nachrichten',
+	'MCHAT_RULES'					=> 'Regeln',
+	'MCHAT_HOURS'					=> array(
+		1 => '%1$d Stunde',
+		2 => '%1$d Stunden',
+	),
+	'MCHAT_MINUTES'					=> array(
+		1 => '%1$d Minute',
+		2 => '%1$d Minuten',
+	),
+	'MCHAT_SECONDS'					=> array(
+		1 => '%1$d Sekunde',
+		2 => '%1$d Sekunden',
+	),
+	'MCHAT_WHOIS_USER'				=> 'IP whois für %1$s',
+	'MCHAT_MESS_LONG'				=> 'Deine Nachricht ist zu lang. Bitte beschränke sie auf %1$d Zeichen',
+	'MCHAT_NO_CUSTOM_PAGE'			=> 'Die individuelle mChat Seite ist zu diesem Zeitpunkt nicht aktiviert!',
+	'MCHAT_NO_RULES'				=> 'Die mChat Regeln sind zu diesem Zeitpunkt nicht aktiviert!',
+	'MCHAT_NOACCESS'				=> 'Du bist nicht bereichtigt im mChat zu posten',
+	'MCHAT_NOACCESS_ARCHIVE'		=> 'Du hast keine Berechtigung das Archiv zu betrachten',
+	'MCHAT_NOJAVASCRIPT'			=> 'Dein Browser unterstützt kein JavaScript oder JavaScript ist deaktiviert',
+	'MCHAT_NOMESSAGE'				=> 'Keine Nachricht',
 	'MCHAT_NOMESSAGEINPUT'			=> 'Du hast keine Nachricht eingegeben',
-	'MCHAT_NOSMILE'					=> 'Keine Smilies gefunden',
-	'MCHAT_NOTINSTALLED_USER'		=> 'Der mChat ist nicht installiert. Bitte kontaktiere den Boardgründer.',
-	'MCHAT_NOT_INSTALLED'			=> 'Die mChat Datenbankeinträge fehlen.<br />Führe bitte den	%sInstaller%s aus, um die Datenbankänderungen für mChat durchzuführen.',
+	'MCHAT_NOSMILE'					=> 'Smilies nicht gefunden',
 	'MCHAT_OK'						=> 'OK',
-	'MCHAT_PAUSE'					=> 'Pausiert',
-	'MCHAT_LOAD'					=> 'Wird geladen',
-	'MCHAT_PERMISSIONS'				=> 'Ändere die Benutzerrechte',
-	'MCHAT_REFRESHING'				=> 'Aktualisiere...',
-	'MCHAT_REFRESH_NO'				=> 'Automatische Aktualisierung ist ausgeschaltet',
-	'MCHAT_REFRESH_YES'				=> 'Automatische Aktualisierung alle <strong>%d</strong> Sekunden',
-	'MCHAT_RESPOND'					=> 'Antworte dem Benutzer',
-	'MCHAT_RESET_QUESTION'			=> 'Lösche den Eingabebereich?',
-	'MCHAT_SESSION_OUT'				=> 'mChat Sitzung ist abgelaufen',
-	'MCHAT_SHOW_LIST'				=> 'Zeige Liste',
-	'MCHAT_SECOND'					=> 'Sekunde ',
-	'MCHAT_SECONDS'					=> 'Sekunden ',
-	'MCHAT_SESSION_ENDS'			=> 'Deine mChat-Sitzung endet in',
+	'MCHAT_PAUSE'					=> 'Pause',
+	'MCHAT_PERMISSIONS'				=> 'Ändere Benutzerberechtigung',
+	'MCHAT_REFRESHING'				=> 'Auffrischung...',
+	'MCHAT_REFRESH_NO'				=> 'Update ist ausgeschaltet',
+	'MCHAT_REFRESH_YES'				=> 'Aktualisierungen alle <strong>%1$d</strong> Sekunden',
+	'MCHAT_RESPOND'					=> 'Reagiere auf Benutzer',
+	'MCHAT_RESET_QUESTION'			=> 'Leere den Eingabebereich ?',
+	'MCHAT_SESSION_OUT'				=> 'Chat Sitzung ist abgelaufen',
+
+	'MCHAT_SESSION_ENDS'			=> 'Chat Sitzung endet in',
 	'MCHAT_SMILES'					=> 'Smilies',
-	'MCHAT_TOTALMESSAGES'			=> 'Nachrichten insgesamt: <strong>%s</strong>',
-	'MCHAT_USESOUND'				=> 'Sound aktivieren?',
-	'MCHAT_ONLINE_USERS_TOTAL'		=> 'Insgesamt sind <strong>%d</strong> Benutzer im mChat ',
-	'MCHAT_ONLINE_USER_TOTAL'		=> 'Insgesamt ist <strong>%d</strong> Benutzer im mChat ',
-	'MCHAT_NO_CHATTERS'				=> 'Derzeit sind keine Benutzer im mChat',
-	'MCHAT_ONLINE_EXPLAIN'			=> '(basierend auf den aktiven Besuchern der letzten %s)',
-	'WHO_IS_CHATTING'				=> 'Wer ist im mChat',
-	'WHO_IS_REFRESH_EXPLAIN'		=> 'Aktualisieren alle <strong>%d</strong> Sekunden',
-	'MCHAT_NEW_POST'				=> 'Neues Thema',
-	'MCHAT_NEW_REPLY'				=> 'Erstelle eine neue Antwort',
-	'MCHAT_NEW_QUOTE'				=> 'Antworte mit einem Zitat',
-	'MCHAT_NEW_EDIT'				=> 'Bearbeite',
+	'MCHAT_TOTALMESSAGES'			=> 'Nachrichten insgesamt: <strong>%1$d</strong>',
+	'MCHAT_USESOUND'				=> 'Verwende Sound',
+	'MCHAT_ONLINE_USERS_TOTAL'		=> array(
+		0 => 'Niemand ist im Chat',
+		1 => 'Insgesamt ist <strong>%1$d</strong> User im Chat',
+		2 => 'Insgesamt sind <strong>%1$d</strong> User im Chat',
+	),
+	'MCHAT_ONLINE_EXPLAIN'			=> 'basierend auf den aktiven Besuchern bisher %1$s',
+	'WHO_IS_CHATTING'				=> 'Wer chattet',
+	'WHO_IS_REFRESH_EXPLAIN'		=> 'Aktualisiert alle <strong>%d</strong> Sekunden',
+	'MCHAT_NEW_POST'				=> 'Schreibe ein neues Thema: %1$s in %2$s',
+	'MCHAT_NEW_REPLY'				=> 'Schreibe eine Antwort: %1$s in %2$s',
+	'MCHAT_NEW_QUOTE'				=> 'Antwortete mit einem Zitat: %1$s in %2$s',
+	'MCHAT_NEW_EDIT'				=> 'Bearbeite eine Nachricht: %1$s in %2$s',
 
 	// UCP
 	'UCP_PROFILE_MCHAT'				=> 'mChat Einstellung',
-	'DISPLAY_MCHAT' 				=> 'mChat auf der Indexseite anzeigen',
+	'DISPLAY_MCHAT'					=> 'mChat auf der Indexseite anzeigen',
 	'SOUND_MCHAT'					=> 'Aktiviere Sound für mChat',
 	'DISPLAY_STATS_INDEX'			=> 'Zeige die "Wer ist im mChat" Statistik auf der Indexseite an',
 	'DISPLAY_NEW_TOPICS'			=> 'Zeige neue Beiträge im mChat an',
 	'DISPLAY_AVATARS'				=> 'Zeige Avatare im mChat an',
 	'CHAT_AREA'						=> 'Chat Umgebung',
-	'CHAT_AREA_EXPLAIN'				=> 'Wähle welche Art von Umgebung für die Eingabe mit einem Chat: <br /> Ein Textbereich oder <br /> einem Eingangsbereich',
+	'CHAT_AREA_EXPLAIN'				=> 'Die Art der Umgebung zu verwenden, um Nachrichten zu schreiben ',
 	'INPUT_AREA'					=> 'Eingangsbereich',
 	'TEXT_AREA'						=> 'Textbereich',
 	'UCP_CAT_MCHAT'					=> 'mChat',
@@ -115,18 +110,20 @@ $lang = array_merge($lang, array(
 	// Preferences
 	'LOG_MCHAT_TABLE_PRUNED'		=> 'mChat Tabelle löschen',
 	'ACP_USER_MCHAT'				=> 'mChat Einstellung',
-	'LOG_DELETED_MCHAT'				=> '<strong>Lösche mChat Nachricht</strong><br />» %1$en',
-	'LOG_EDITED_MCHAT'				=> '<strong>Editiere mChat Nachricht</strong><br />» %1$en',
-	'MCHAT_TOP_POSTERS'				=> 'Top Poster',
-	'MCHAT_NEW_CHAT'				=> 'Neue mChat Nachricht!',
-	'MCHAT_SEND_PM'			 		=> 'Sende private Nachricht',
+	'LOG_DELETED_MCHAT'				=> '<strong>lösche mChat Nachricht</strong><br />» %1$s',
+	'LOG_EDITED_MCHAT'				=> '<strong>Bearbeite mChat Nachricht</strong><br />» %1$s',
+	'MCHAT_NEW_CHAT'				=> 'Neue Chat Nachricht!',
+	'MCHAT_SEND_PM'					=> 'Sende Private Nachricht',
+	'MCHAT_LIKE'					=> 'Like dieses Posting',
+	'MCHAT_LIKES'					=> 'Likes dieses Posting',
 
-	// Custom edits
-	'REPLY_WITH_LIKE'				=> 'mir gefällt dieser Beitrag',
+	// Custom translations for administrators
+	'MCHAT_RULES_MESSAGE'			=> '',
+	'MCHAT_STATIC_MESSAGE'			=> '',
 
-	// board3.de portal lang
-	'PORTAL_MCHAT_TITLE'			=> 'mChat',
-	'PORTAL_MCHAT_TITLE_EXP'		=> 'mChat Einstellungen fÃ¼r den Board3-Portal-Block',
-	'PORTAL_MCHAT'					=> 'Anzeige im Portal',
-	'PORTAL_MCHAT_EXP'				=> 'Verwenden Sie diese Einstellung zum Anzeigen des mChat im Portal.',
+	//board3
+	'PORTAL_MCHAT_TITLE'         => 'mChat',
+	'PORTAL_MCHAT_TITLE_EXP'      => 'mChat Einstellungen ƒÂ¼r den Board3-Portal-Block',
+	'PORTAL_MCHAT'               => 'Anzeige im Portal',
+	'PORTAL_MCHAT_EXP'            => 'Verwenden Sie diese Einstellung zum Anzeigen des mChat im Portal.',
 ));

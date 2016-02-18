@@ -1,11 +1,12 @@
 <?php
+
 /**
-*
-* @package phpBB Extension - mChat
-* @copyright (c) 2015 dmzx - http://www.dmzx-web.net
-* @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
-*
-*/
+ *
+ * @package phpBB Extension - mChat
+ * @copyright (c) 2015 dmzx - http://www.dmzx-web.net
+ * @license http://opensource.org/licenses/gpl-2.0.php GNU General Public License v2
+ *
+ */
 
 if (!defined('IN_PHPBB'))
 {
@@ -33,17 +34,21 @@ if (empty($lang) || !is_array($lang))
 // ’ » “ ” …
 
 $lang = array_merge($lang, array(
-	// UMIL stuff
 	'ACP_MCHAT_CONFIG'						=> 'Konfiguration',
 	'ACP_CAT_MCHAT'							=> 'mChat',
-	'ACP_MCHAT_TITLE'						=> 'Mini-Chat',
-	'ACP_MCHAT_TITLE_EXPLAIN'				=> 'Ein Mini-Chat (aka Shoutbox) für dein Forum',
-	'MCHAT_TABLE_DELETED'					=> 'Die mChat Tabelle wurde erfolgreich gelöscht',
-	'MCHAT_TABLE_CREATED'					=> 'Die mChat Tabelle wurde erfolgreich erstellt',
-	'MCHAT_TABLE_UPDATED'					=> 'Die mChat Tabelle wurde erfolgreich upgedated',
-	'MCHAT_NOTHING_TO_UPDATE'				=> 'Es gibt nichts zu tun....fahre fort',
+	'ACP_MCHAT_TITLE'						=> 'mChat Extension für phpBB 3.1',
+	'ACP_MCHAT_VERSION'						=> 'Version',
 	'UCP_CAT_MCHAT'							=> 'mChat Präferenzen',
 	'UCP_MCHAT_CONFIG'						=> 'mChat Benutzerpräferenzen',
+
+	// ACP configuration sections
+	'MCHAT_SETTINGS_INDEX'					=> 'Einstellung Index Seite',
+	'MCHAT_SETTINGS_CUSTOM'					=> 'Benutzerdefinierte Seiteneinstellungen ',
+	'MCHAT_SETTINGS_ARCHIVE'				=> 'Einstellungen Archiv Seite',
+	'MCHAT_SETTINGS_POSTS'					=> 'Einstellung neue Beiträge',
+	'MCHAT_SETTINGS_MESSAGES'				=> 'Einstellung Mitteilung',
+	'MCHAT_SETTINGS_PRUNE'					=> 'Befehls Einstellung',
+	'MCHAT_SETTINGS_STATS'					=> 'Einstellung Wer ist im Chat',
 
 	// ACP entries
 	'ACP_MCHAT_RULES'						=> 'Regeln',
@@ -51,32 +56,28 @@ $lang = array_merge($lang, array(
 	'LOG_MCHAT_CONFIG_UPDATE'				=> '<strong>mChat-Konfiguration erfolgreich geändert</strong>',
 	'MCHAT_CONFIG_SAVED'					=> 'Die mChat-Konfiguration wurde erfolgreich geändert',
 	'MCHAT_TITLE'							=> 'Mini-Chat',
-	'MCHAT_VERSION'							=> 'Version:',
 	'MCHAT_AVATARS'							=> 'Avatare anzeigen',
-	'MCHAT_AVATARS_EXPLAIN'					=> 'Wenn ja gesetzt ist, wird ein in der Größe verändertes Benutzer Avatare angezeigt.',
+	'MCHAT_AVATARS_EXPLAIN'					=> 'Wenn ja gesetzt ist, wird ein in der Größe verändertes Benutzer Avatare angezeigt',
 	'MCHAT_ON_INDEX'						=> 'mChat im Index',
-	'MCHAT_ON_INDEX_EXPLAIN'				=> 'Ermöglicht die Anzeige des MCHAT auf der Indexseite.',
 	'MCHAT_INDEX_HEIGHT'					=> 'Index Seiten Höhe',
-	'MCHAT_INDEX_HEIGHT_EXPLAIN'			=> 'Die Höhe der Chat Box in Pixeln auf der Index-Seite des Forums.<br /><em>Du kannst nur von 50 bis 1000 Pixel einstellen</em>.',
+	'MCHAT_INDEX_HEIGHT_EXPLAIN'			=> 'Die Höhe der Chat Box in Pixeln auf der Index-Seite des Forums.<br /><em>Du kannst nur von 50 bis 1000 Pixel einstellen</em>',
 	'MCHAT_LOCATION'						=> 'Platzierung im Forum',
-	'MCHAT_LOCATION_EXPLAIN'				=> 'Wähle die Position von mChat auf der Startseite.',
 	'MCHAT_TOP_OF_FORUM'					=> 'Oberhalb des Forums',
 	'MCHAT_BOTTOM_OF_FORUM'					=> 'Unterhalb des Forums',
 	'MCHAT_REFRESH'							=> 'Aktualisieren',
-	'MCHAT_REFRESH_EXPLAIN'					=> 'Anzahl der Sekunden, bevor Chat automatisch aktualisiert wird.<br /><em>Sie sind von 5 bis 60 Sekunden begrenzt</em>.',
+	'MCHAT_REFRESH_EXPLAIN'					=> 'Anzahl der Sekunden, bevor Chat automatisch aktualisiert wird.<br /><em>Sie sind von 5 bis 60 Sekunden begrenzt</em>',
 	'MCHAT_LIVE_UPDATES'					=> 'Live Updates von bearbeiteten und gelöschten Nachrichten',
 	'MCHAT_LIVE_UPDATES_EXPLAIN'			=> 'Wenn ein Benutzer Nachrichten bearbeitet oder löscht, werden die Änderungen für alle anderen live aktualisiert, ohne dass sich die Seite zu aktualisiert. Deaktivieren Sie diese Option, wenn Leistungsprobleme auftreten.',
 	'MCHAT_PRUNE'							=> 'Automatisches Löschen erlauben',
-	'MCHAT_PRUNE_EXPLAIN'					=> 'Stelle JA ein, um die automatische Löschfunktion zu aktivieren.<br /><em>Hat nur Auswirkung, wenn ein Benutzer die separate Seite oder das Archiv betrachtet.</em.',
+	'MCHAT_PRUNE_EXPLAIN'					=> 'Only occurs if a user views the custom or archive pages.',
 	'MCHAT_PRUNE_NUM'						=> 'Anzahl verbleibender Nachrichten nach dem automatischem Löschen',
-	'MCHAT_PRUNE_NUM_EXPLAIN'				=> 'Die Anzahl der Nachrichten, die nach dem Löschen im Chat verbleiben.',
-	'MCHAT_MESSAGE_LIMIT'					=> 'Nachrichtenlimit',
-	'MCHAT_MESSAGE_LIMIT_EXPLAIN'			=> 'Die maximale Anzahl der Nachrichten, die auf der Hauptseite des Forums angezeigt werden soll.<br /><em>Empfohlen sind zwischen 10 und 20</em>.',
-	'MCHAT_MESSAGE_NUM'						=> 'Nachrichtengrenze',
-	'MCHAT_MESSAGE_NUM_EXPLAIN'				=> 'Die maximale Anzahl von Nachrichten im Chat-Bereich die auf der Indexseite angezeigt werden. <br /> <Em> Empfohlen von 10 bis 50 </ em>.',
-	'MCHAT_ARCHIVE_LIMIT'					=> 'Archivlimit',
-	'MCHAT_ARCHIVE_LIMIT_EXPLAIN'			=> 'Die maximale Anzahl Nachrichten pro Seite im Archiv.<br /> <em>Empfohlen sind 25 bis 50</e.',
-	'MCHAT_FLOOD_TIME'						=> 'Flood-Intervall',
+	'MCHAT_MESSAGE_LIMIT'					=> 'Anzahl der Nachrichten, die auf der kundenspezifischen Seite angezeigt werden',
+	'MCHAT_MESSAGE_LIMIT_EXPLAIN'			=> 'Die maximale Anzahl der Nachrichten, die auf der Hauptseite des Forums angezeigt werden soll.<br /><em>Empfohlen sind zwischen 10 und 30</em>',
+	'MCHAT_MESSAGE_NUM'						=> 'Anzahl der Nachrichten, die auf der Indexseite angezeigt werden',
+	'MCHAT_MESSAGE_NUM_EXPLAIN'				=> 'Die maximale Anzahl von Nachrichten im Chat-Bereich die auf der Indexseite angezeigt werden. <br /> <Em> Empfohlen von 10 bis 50 </ em>',
+	'MCHAT_ARCHIVE_LIMIT'					=> 'Anzahl der Meldungen, die auf der Archivseite angezeigt werden',
+	'MCHAT_ARCHIVE_LIMIT_EXPLAIN'			=> 'Die maximale Anzahl Nachrichten pro Seite im Archiv.<br /> <em>Empfohlen sind 25 bis 50</em>',
+	'MCHAT_FLOOD_TIME'						=> 'Flood Intervall',
 	'MCHAT_FLOOD_TIME_EXPLAIN'				=> 'Die Zeit in Sekunden, die ein Benutzer warten muß, bis er eine neue Nachricht im mChat absenden kann.<br /><em>Empfohlen sind 5 bis 30, stelle 0 ein, um die Funktion zu deaktivieren</.',
 	'MCHAT_EDIT_DELETE_LIMIT'				=> 'Frist für die Bearbeitung und das Löschen von Nachrichten',
 	'MCHAT_EDIT_DELETE_LIMIT_EXPLAIN'		=> 'Nachrichten, die älter als die angegebene Anzahl von Sekunden können vom Autor nicht mehr bearbeitet oder gelöscht werden.<br />Benutzer, die bearbeiten/löschen dürfen und von der <em>Moderator Genehmigung befreit sind</ me> von dieser Frist. <br /> Bei 0 wird unbegrenztes Bearbeiten und Löschen ermöglicht.',
@@ -89,10 +90,6 @@ $lang = array_merge($lang, array(
 	'MCHAT_DATE_FORMAT'						=> 'Datums-Format',
 	'MCHAT_DATE_FORMAT_EXPLAIN'				=> 'Die Syntax entspricht der der date()-Funktion von PHP <a href="http://www.php.net/date">date()</a>',
 	'MCHAT_CUSTOM_DATEFORMAT'				=> 'Eigenes…',
-	'MCHAT_WHOIS'							=> 'Whois',
-	'MCHAT_WHOIS_EXPLAIN'					=> 'Erlaubt es die Benutzer anzuzeigen, die sich gerade auf der mChat-Seite befinden.',
-	'MCHAT_WHOIS_REFRESH'					=> 'Whois aktualisieren',
-	'MCHAT_WHOIS_REFRESH_EXPLAIN'			=> 'Die Anzahl Sekunden, bis die Whois-anzeige aktualisiert wird.<br /><strong>Nicht unter 30 Sekunden einstellen!</strong>.',
 	'MCHAT_BBCODES_DISALLOWED'				=> 'Nicht erlaubte BBcodes',
 	'MCHAT_BBCODES_DISALLOWED_EXPLAIN'		=> 'Hier kann man BBcodes eintragen, die <strong>nicht</strong> in einer Nachricht verwendet werden dürfen.<br />BBcodes mit einem senkrechten Strich trennen, beispielsweise: b|u|code',
 	'MCHAT_STATIC_MESSAGE'					=> 'Permanente Nachricht in der Chatbox',
@@ -111,43 +108,46 @@ $lang = array_merge($lang, array(
 	'MCHAT_NEW_POSTS_EDIT_EXPLAIN'			=> 'Stelle auf Ja, damit bearbeitete Beiträge aus dem Forum	im Chat Nachrichtenbereich angezeigt werden.',
 	'MCHAT_NEW_POSTS_QUOTE'					=> 'Zeige zitierte Beiträge an',
 	'MCHAT_NEW_POSTS_QUOTE_EXPLAIN'			=> 'Stelle auf Ja, damit die zitierten Beiträge aus dem Forum im Chat Nachrichtenbereich angezeigt werden.',
-	'MCHAT_MAIN'							=> 'Hauptkonfiguration',
-	'MCHAT_STATS'							=> 'Wer ist im mChat?',
-	'MCHAT_STATS_INDEX'						=> 'Anzeige auf dem Index',
-	'MCHAT_STATS_INDEX_EXPLAIN'				=> 'Zeigt auf dem Index an wer im Mini-Chat ist.',
-	'MCHAT_MESSAGE_TOP'						=> 'Nachricht unten / oben',
-	'MCHAT_MESSAGE_TOP_EXPLAIN'				=> 'Hier kannst Du einstellen, ob der Nachrichtenbereich oben oder unten angezeigt werden soll.',
+	'MCHAT_WHOIS'							=> 'Anzeige <em>Wer ist im Chat</em> unter dem Chat',
+	'MCHAT_STATS_INDEX'						=> 'Anzeige <em>Wer chattet</em> im Statistikbereich',
+	'MCHAT_STATS_INDEX_EXPLAIN'				=> 'Zeigt an, wer im Chat <em>Wer ist online</em> Bereich auf der Indexseite ist',
+	'MCHAT_WHOIS_REFRESH'					=> 'Wer ist im Chat Aktualisierungsintervall ',
+	'MCHAT_WHOIS_REFRESH_EXPLAIN'			=> 'Die Anzahl Sekunden, bis die Whois-anzeige aktualisiert wird.<br /><strong>Nicht unter 30 Sekunden einstellen!</strong>',
+	'MCHAT_MESSAGE_TOP'						=> 'Ort neuer Chat-Nachrichten',
+	'MCHAT_MESSAGE_TOP_EXPLAIN'				=> 'Neue Nachrichten werden am oberen oder am unteren Rand im Chat erscheinen.',
 	'MCHAT_BOTTOM'							=> 'Unten',
 	'MCHAT_TOP'								=> 'Oben',
-	'MCHAT_MESSAGES'						=> 'Nachrichten-Einstellungen',
 	'MCHAT_PAUSE_ON_INPUT'					=> 'Den Chat während einer Nachrichteneingabe nicht aktualisieren',
-	'MCHAT_PAUSE_ON_INPUT_EXPLAIN'			=> 'Falls JA eingestellt ist, ist das automatische Aktualisieren während der Eingabe einer Nachricht deaktiviert.',
+	'MCHAT_PAUSE_ON_INPUT_EXPLAIN'			=> 'Falls JA eingestellt ist, ist das automatische Aktualisieren während der Eingabe einer Nachricht deaktiviert',
+	'MCHAT_PURGE'							=> 'Lösche jetzt alle Nachrichten',
+	'MCHAT_PURGE_CONFIRM'					=> 'Bestätige alle Nachrichten werden gelöscht',
+	'MCHAT_PURGED'							=> 'Alle mChat Nachrichten wurden erfolgreich gelöscht',
 
 	// Error reporting
-	'TOO_LONG_DATE'							=> 'Das angegebene Datumsformat ist zu lang.',
-	'TOO_SHORT_DATE'						=> 'Das angegebene Datumsformat ist zu kurz.',
-	'TOO_SMALL_REFRESH'						=> 'Das Aktualisierungsintervall ist zu kurz.',
-	'TOO_LARGE_REFRESH'						=> 'Das Aktualisierungsintervall ist zu lang.',
-	'TOO_SMALL_MESSAGE_LIMIT'				=> 'Das Nachrichtenlimit ist zu klein.',
-	'TOO_LARGE_MESSAGE_LIMIT'				=> 'Das Nachrichtenlimit ist zu groß.',
-	'TOO_SMALL_ARCHIVE_LIMIT'				=> 'Der Wert des Archivlimits ist zu klein.',
-	'TOO_LARGE_ARCHIVE_LIMIT'				=> 'Der Wert des Archivlimits ist zu groß.',
-	'TOO_SMALL_FLOOD_TIME'					=> 'Das Flood-Intervall ist zu kurz.',
-	'TOO_LARGE_FLOOD_TIME'					=> 'Das Flood-Intervall ist zu lang.',
-	'TOO_SMALL_MAX_MESSAGE_LNGTH'			=> 'Der Wert der maximalen Nachrichtenlänge ist zu klein.',
-	'TOO_LARGE_MAX_MESSAGE_LNGTH'			=> 'Der Wert der maximalen Nachrichtenlänge ist zu groß.',
-	'TOO_SMALL_MAX_WORDS_LNGTH'				=> 'Der Wert der maximalen Wortlänge ist zu groß.',
-	'TOO_LARGE_MAX_WORDS_LNGTH'				=> 'Der Wert für die maximale Wortlänge ist zu groß.',
-	'TOO_SMALL_WHOIS_REFRESH'				=> 'Der Wert für die Whois-Aktualisierung ist zu klein.',
-	'TOO_LARGE_WHOIS_REFRESH'				=> 'Der Wert für die Whois-Aktualisierung ist zu groß.',
-	'TOO_SMALL_INDEX_HEIGHT'				=> 'Der Wert für die Höhe des Index ist zu klein.',
-	'TOO_LARGE_INDEX_HEIGHT'				=> 'Der Wert für die Höhe des Index ist zu groß.',
-	'TOO_SMALL_CUSTOM_HEIGHT'				=> 'Der Wert für die Höhe des Chats auf einer separaten Seite ist zu klein.',
-	'TOO_LARGE_CUSTOM_HEIGHT'				=> 'Der Wert für die Höhe des Chats auf einer separaten Seite ist zu groß',
-	'TOO_SHORT_STATIC_MESSAGE'				=> 'Der Wert für die Länge der permanenten Nachricht ist zu klein.',
-	'TOO_LONG_STATIC_MESSAGE'				=> 'Der Wert für die Länge der permanenten Nachricht ist zu groß.',
-	'TOO_SMALL_TIMEOUT'						=> 'Der Wert für die Zeitüberschreitung eines Benutzers ist zu klein.',
-	'TOO_LARGE_TIMEOUT'						=> 'Der Wert für die Zeitüberschreitung eines Benutzers ist zu groß.',
+	'TOO_SMALL_MCHAT_ARCHIVE_LIMIT'			=> 'Der Archiv Grenzwert ist zu klein.',
+	'TOO_LARGE_MCHAT_ARCHIVE_LIMIT'			=> 'Der Archiv Grenzwert ist zu groß.',
+	'TOO_LONG_MCHAT_BBCODE_DISALLOWED'		=> 'Der verbotene bbcodes Wert ist zu lang.',
+	'TOO_SMALL_MCHAT_CUSTOM_HEIGHT'			=> 'Der individuelle Höhenwert ist zu klein.',
+	'TOO_LARGE_MCHAT_CUSTOM_HEIGHT'			=> 'Der individuelle Höhenwert ist zu groß.',
+	'TOO_LONG_MCHAT_DATE'					=> 'Das eingegebene Datumsformat ist zu lang.',
+	'TOO_SHORT_MCHAT_DATE'					=> 'Das eingegebene Datumsformat ist zu kurz.',
+	'TOO_SMALL_MCHAT_FLOOD_TIME'			=> 'Das Flood-Intervall ist zu kurz.',
+	'TOO_LARGE_MCHAT_FLOOD_TIME'			=> 'Das Flood-Intervall ist zu lang.',
+	'TOO_SMALL_MCHAT_INDEX_HEIGHT'			=> 'Der Index Höhenwert ist zu klein.',
+	'TOO_LARGE_MCHAT_INDEX_HEIGHT'			=> 'Der Index Höhenwert ist zu groß.',
+	'TOO_SMALL_MCHAT_MAX_MESSAGE_LNGTH'		=> 'Der maximale Nachrichtenlänge Wert ist zu klein.',
+	'TOO_LARGE_MCHAT_MAX_MESSAGE_LNGTH'		=> 'Der maximale Nachrichtenlänge Wert ist zu groß.',
+	'TOO_SMALL_MCHAT_MESSAGE_LIMIT'			=> 'Der Nachrichten Grenzwert ist zu klein.',
+	'TOO_LARGE_MCHAT_MESSAGE_LIMIT'			=> 'Der Nachrichten Grenzwert ist zu groß.',
+	'TOO_SMALL_MCHAT_MESSAGE_NUM'			=> 'Die angezeigte Anzahl der Nachrichten auf der Indexseite ist zu klein.',
+	'TOO_LARGE_MCHAT_MESSAGE_NUM'			=> 'Die angezeigte Anzahl der Nachrichten auf der Indexseite ist zu groß.',
+	'TOO_SMALL_MCHAT_REFRESH'				=> 'Der Aktualisierungs Wert ist zu klein.',
+	'TOO_LARGE_MCHAT_REFRESH'				=> 'Der Aktualisierungs Wert ist zu groß.',
+	'TOO_LONG_MCHAT_STATIC_MESSAGE'			=> 'Der statische Nachrichtenwert ist zu lang.',
+	'TOO_SMALL_MCHAT_TIMEOUT'				=> 'Der Benutzer Timeout Wert ist zu klein.',
+	'TOO_LARGE_MCHAT_TIMEOUT'				=> 'Der Benutzer Timeout Wert ist zu groß.',
+	'TOO_SMALL_MCHAT_WHOIS_REFRESH'			=> 'Der Whois Refresh-Wert ist zu klein.',
+	'TOO_LARGE_MCHAT_WHOIS_REFRESH'			=> 'Der Whois Refresh-Wert ist zu groß.',
 
 	// User perms
 	'ACL_U_MCHAT_USE'						=> 'Kann mChat benutzen',
@@ -168,6 +168,6 @@ $lang = array_merge($lang, array(
 	'ACL_A_MCHAT'							=> 'Kann mChat Einstellung managen',
 
 	//board3
-	'MCHAT_ON_PORTAL'						=> 'mChat im Portal',
-	'MCHAT_ON_PORTAL_EXPLAIN'				=> 'ErmÃ¶glicht die Anzeige des MCHAT auf der Board3-Portalseite.',
+	'MCHAT_ON_PORTAL'                  => 'mChat im Portal',
+	'MCHAT_ON_PORTAL_EXPLAIN'            => 'ErmÃ¶glicht die Anzeige des MCHAT auf der Board3-Portalseite.',
 ));

@@ -1,6 +1,6 @@
 # mChat Extension for phpBB 3.1
 
-[![Build Status](https://travis-ci.org/dmzx/mChat-Extension.svg?branch=master)](https://travis-ci.org/dmzx/mChat-Extension)
+[![Build Status](https://travis-ci.org/talonos/Mchat-Extension-board3.svg?branch=master)](https://travis-ci.org/talonos/Mchat-Extension-board3)
 
 ## Install
 

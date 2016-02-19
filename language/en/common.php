@@ -120,7 +120,7 @@ $lang = array_merge($lang, array(
 	// Custom translations for administrators
 	'MCHAT_RULES_MESSAGE'			=> '',
 	'MCHAT_STATIC_MESSAGE'			=> '',
-	
+
 	// board3.de portal lang
 	'PORTAL_MCHAT_TITLE'				=> 'Mini-Chat',
 	'PORTAL_MCHAT_TITLE_EXP'				=> 'Mini-Chat Settings for board3 portal block',

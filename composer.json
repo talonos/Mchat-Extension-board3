@@ -1,10 +1,10 @@
 {
-	"name": "dmzx/mchat",
+	"name": "talonos/b3pmchat",
 	"type": "phpbb-extension",
-	"description": "mChat Extension for phpbb 3.1.x",
+	"description": "mChat Board3 requires mChat extension 2.0.0-RC6 enabled to enable this extension",
 	"homepage": "http://www.dmzx-web.net",
-	"version": "1.0.0-RC1",
-	"time": "2015-03-10",
+	"version": "2.0.0-RC6",
+	"time": "2016-10-23",
 	"keywords": ["phpbb", "extension", "mchat"],
 	"license": "GPL-2.0",
 	"authors": [
@@ -23,6 +23,11 @@
 			"name": "Rich McGirr",
 			"homepage": "http://rmcgirr83.org",
 			"role": "Author"
+		},
+		{
+			"name": "Talonos",
+			"homepage": "http://pretereo-stormrage.co.uk",
+			"role": "Board3 Extension Developer"
 		}
 	],
 	"require": {
@@ -32,14 +37,14 @@
 		"phpbb/epv": "dev-master"
 	},
 	"extra": {
-		"display-name": "mChat Extension for phpBB 3.1",
+		"display-name": "mChat Board3",
 		"soft-require": {
 			"phpbb/phpbb": "3.1.*"
 			},
 		"version-check": {
-			"host": "www.dmzx-web.net",
+			"host": "www.pretereo-stormrage.co.uk",
 			"directory": "/versions",
-			"filename": "mchat_version.json"
+			"filename": "mchat_board3"
 		}
 	}
 }

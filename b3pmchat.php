@@ -7,7 +7,7 @@
 * @mchat on portal by Talonos @ http://pretereo-stormrage.co.uk
 */
 
-namespace dmzx\mchat;
+namespace talonos\b3pmchat;
 
 /**
 * @package mchat
@@ -40,7 +40,7 @@ class b3pmchat extends \board3\portal\modules\module_base
 	* file must be in "language/{$user->lang}/mods/portal/"
 	*/
 		public $language = array(
-				'vendor'	=> 'dmzx/mchat',
+				'vendor'	=> 'talonos/b3pmchat',
 				'file'	=> 'common',
 	);
 
@@ -51,34 +51,62 @@ class b3pmchat extends \board3\portal\modules\module_base
 	/** @var \phpbb\template\template */
 	protected $template;
 
+	/** @var \dmzx\mchat\core\functions */
+	protected $functions;
+
+	/** @var \dmzx\mchat\core\mchat */
+	protected $mchat;
+
+	/** @var \phpbb\controller\helper */
+	protected $helper;
+
+	/** @var \phpbb\user */
+	protected $user;
+
+	/** @var string */
+	protected $php_ext;
 	/**
-	* Constructor for clock module
+	* 
 	*
 	* @param \phpbb\config\config $config phpBB config
 	* @param \phpbb\template\template $template phpBB template
+	* @param \dmzx\mchat\core\functions		$functions
+	* @param \dmzx\mchat\core\mchat			$mchat
+	* @param \phpbb\controller\helper		$helper
+	* @param \phpbb\user					$user
+	* @param string							$php_ext
+	* @param \phpbb\auth\auth					$auth
 	*/
-	public function __construct($config, $template)
-	{
-			$this->config = $config;
-			$this->template = $template;
-	}
 
+	public function __construct($config, $template, \dmzx\mchat\core\functions $functions, \dmzx\mchat\core\mchat $mchat, \phpbb\controller\helper $helper, \phpbb\user $user, $php_ext)
+	{
+		$this->config = $config;
+		$this->template = $template;
+		$this->functions	= $functions;
+		$this->mchat		= $mchat;
+		$this->helper		= $helper;
+		$this->user			= $user;
+		$this->php_ext		= $php_ext;
+	}
 
 
 	public function get_template_center($module_id)
 	{
-
+		$this->mchat->page_index();
 		$this->template->assign_vars(array(
-			'S_DISPLAY_MCHAT_PORTAL_PLACEHOLDER'	=> ($this->config['board3_mchat_' . $module_id]) ? true : false,
+			'S_DISPLAY_MCHAT_PORTAL_PLACEHOLDER'	=> ($this->config['mchat_on_portal']) ? true : false,
 		));
-		return '@dmzx_mchat/mchat_portal.html';
+		return '@talonos_b3pmchat/mchat_portal.html';
 	}
-
+	
 	public function get_template_acp($module_id)
 	{
 	return array(
 			'title'	=> 'PORTAL_MCHAT_TITLE',
+			'explain' => true,
 				'vars'	=> array(
+						'legend1'                     => 'PORTAL_MCHAT_TITLE',
+						'mchat_on_portal'		=> array('lang' => 'PORTAL_MCHAT_TITLE',	'validate' => 'string', 'type' => 'radio:yes_no',	'explain' => true),
 				)
 	);
 	}
@@ -88,14 +116,14 @@ class b3pmchat extends \board3\portal\modules\module_base
 	*/
 	public function install($module_id)
 	{
-		$this->config->set('board3_mchat_' . $module_id, 1);
+		$this->config->set('mchat_on_portal', 1);
 		return true;
 	}
 
 	public function uninstall($module_id, $db)
 	{
 
-		$this->config->delete('board3_mchat_' . $module_id);
+		$this->config->delete('mchat_on_portal');
 		return true;
 	}
 }

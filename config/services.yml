@@ -1,30 +1,13 @@
 imports:
     - { resource: tables.yml }
+    - { resource: user_config_keys.yml }
 
 services:
-    dmzx.mchat.admin.controller:
-        class: dmzx\mchat\controller\admin_controller
-        arguments:
-            - '@config'
-            - '@template'
-            - '@log'
-            - '@user'
-            - '@dbal.conn'
-            - '@cache'
-            - '@request'
-            - '%dmzx.mchat.table.mchat%'
-            - '%core.root_path%'
-            - '%core.php_ext%'
-    dmzx.mchat.main.controller:
-        class: dmzx\mchat\controller\main_controller
-        arguments:
-            - '@dmzx.mchat.core'
-            - '@request'
     dmzx.mchat.core:
         class: dmzx\mchat\core\mchat
         arguments:
-            - '@dmzx.mchat.functions_mchat'
-            - '@config'
+            - '@dmzx.mchat.functions'
+            - '@dmzx.mchat.settings'
             - '@controller.helper'
             - '@template'
             - '@user'
@@ -32,35 +15,34 @@ services:
             - '@pagination'
             - '@request'
             - '@dispatcher'
+            - '@ext.manager'
             - '%core.root_path%'
             - '%core.php_ext%'
-    dmzx.mchat.functions_mchat:
-        class: dmzx\mchat\core\functions_mchat
+            - '@?phpbb.collapsiblecategories.operator'
+    dmzx.mchat.functions:
+        class: dmzx\mchat\core\functions
         arguments:
-            - '@config'
+            - '@dmzx.mchat.settings'
             - '@user'
             - '@auth'
             - '@log'
             - '@dbal.conn'
             - '@cache.driver'
+            - '@dispatcher'
             - '%core.root_path%'
             - '%core.php_ext%'
             - '%dmzx.mchat.table.mchat%'
+            - '%dmzx.mchat.table.mchat_log%'
             - '%dmzx.mchat.table.mchat_sessions%'
-    dmzx.mchat.listener:
-        class: dmzx\mchat\event\listener
+    talonos.b3pmchat.b3pmchat:
+        class: talonos\b3pmchat\b3pmchat
         arguments:
-            - '@dmzx.mchat.functions_mchat'
+            - '@config'
+            - '@template'
+            - '@dmzx.mchat.functions'
             - '@dmzx.mchat.core'
             - '@controller.helper'
             - '@user'
             - '%core.php_ext%'
-        tags:
-            - { name: event.listener }
-    dmzx.mchat.b3pmchat:
-        class: dmzx\mchat\b3pmchat
-        arguments:
-            - '@config'
-            - '@template'
         tags:
             - { name: board3.portal.module }

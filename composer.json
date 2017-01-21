@@ -1,9 +1,9 @@
 {
 	"name": "talonos/b3pmchat",
 	"type": "phpbb-extension",
-	"description": "mChat Board3 requires mChat extension 2.0.0-RC6 enabled to enable this extension",
+	"description": "mChat Board3 requires mChat extension 2.0.0 enabled to enable this extension",
 	"homepage": "http://www.dmzx-web.net",
-	"version": "2.0.0-RC6",
+	"version": "2.0.0",
 	"time": "2016-10-23",
 	"keywords": ["phpbb", "extension", "mchat"],
 	"license": "GPL-2.0",

@@ -39,7 +39,7 @@ if (empty($lang) || !is_array($lang))
 //
 
 $lang = array_merge($lang, array(
-	'B3PMCHAT_UPGRADE'			=> 'Cette version de l’extension « b3pmChat » requiert l’extension « mChat » version 2.0.0-RC6 ou plus récente pour fonctionner.',
+	'B3PMCHAT_UPGRADE'			=> 'Cette version de l’extension « b3pmChat » requiert l’extension « mChat » version 2.0.0 ou plus récente pour fonctionner.',
 	'PORTAL_MCHAT_TITLE'		=> 'mChat pour Board3 Portal',
 	'PORTAL_MCHAT_TITLE_EXP'	=> '<div style="color: #AA0000;">Pour modifier les options de l’extension « mChat » se rendre dans :</br> Panneau d’administration, onglet « EXTENSIONS », catégorie « mChat ».</div>',
 ));
